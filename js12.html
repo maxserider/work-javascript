@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .shape {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var numberOfShapes = 10;
+
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            for (var i = 0; i < numberOfShapes; i++) {
+                var shapeType = Math.random() < 0.5 ? "triangle" : "circle";
+                var shape = document.createElement("div");
+                shape.classList.add("shape");
+                if (shapeType === "circle") {
+                    shape.classList.add("circle");
+                }
+                shape.style.borderBottom = "100px solid " + getRandomColor();
+                document.body.appendChild(shape);
+            }
+        });
+    </script>
+</body>
+</html>

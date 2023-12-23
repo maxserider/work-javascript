@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор чисел</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .output {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Генератор випадкових чисел</h1>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    function generateRandomTwoDigitNumber() {
+      return Math.floor(Math.random() * 90 + 10);
+    }
+
+    function generateThreeRandomNumbersInRange(min, max) {
+      const numbers = [];
+      for (let i = 0; i < 3; i++) {
+        numbers.push(Math.floor(Math.random() * (max - min + 1)) + min);
+      }
+      return numbers;
+    }
+
+    const randomNum1 = generateRandomTwoDigitNumber();
+    const randomNum2 = generateRandomTwoDigitNumber();
+    const randomNumbersInRange = generateThreeRandomNumbersInRange(10, 50);
+
+    const outputElement = document.getElementById('output');
+    outputElement.innerHTML = `
+      <p>Перше випадкове число: ${randomNum1}</p>
+      <p>Друге випадкове число: ${randomNum2}</p>
+      <p>Три випадкових числа в інтервалі [10, 50]: ${randomNumbersInRange.join(', ')}</p>
+    `;
+  </script>
+</body>
+</html>

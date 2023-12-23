@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 50px;
+    }
+    input {
+        padding: 7px 20px;
+        margin: 10px;
+        border-radius: 3px;
+    }
+    button {
+        background-color: rgb(0, 173, 156);
+        border: none;
+        padding: 10px 20px;    
+        color: white;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: rgb(0, 140, 128), 128, 113;
+    }
+</style>
+</head>
+<body>
+    <label for="numSteps">Введіть кількість сходинок:</label>
+    <input type="number" id="numSteps" name="numSteps">
+    <button onclick="drawSteps()">Показати сходинки</button>
+    <div id="output"></div>
+    <script>
+        function drawSteps() {
+            let num = document.getElementById('numSteps').value;
+            let output = document.getElementById('output');
+            output.innerHTML = '';
+
+            for (let i = 1; i <= num; i++) {
+                let step = '';
+                for (let j = 0; j < i; j++) {
+                    step += '☺';
+                }
+                step += '<br>';
+                output.innerHTML += step;
+            }
+        }
+    </script>
+</body>
+</html>

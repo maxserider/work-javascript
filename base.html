@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спеціальні символи HTML</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <label for="minValue">Мінімальне значення коду:</label>
+    <input type="number" id="minValue">
+    <br><br>
+    <label for="maxValue">Максимальне значення коду:</label>
+    <input type="number" id="maxValue">
+    <br><br>
+    <button onclick="generateCodes()">Показати символи</button>
+    <div id="output"></div>
+</div>
+
+<script>
+    function generateCodes() {
+        let minValue = parseInt(document.getElementById("minValue").value);
+        let maxValue = parseInt(document.getElementById("maxValue").value);
+        let output = document.getElementById("output");
+        let codes = [
+            '&#9728;', '&#9925', '&#9729;', '&#9730;', '&#9731;', '&#10052;', '&#10053;', '&#10054;', '&#9788;', '&#9789;',
+            '&#9790;', '&#9733;', '&#9734;', '&#10026;', '&#10027;', '&#10031;', '&#9885;', '&#10037;', '&#9789;', '&#9790;',
+            '&#127761;', '&#127764;', '&#127763;', '&#127765;', '&#127769;', '&#127771;', '&#9737;', '&#9791;', '&#9792;',
+            '&#9793;', '&#9794;', '&#9795;', '&#9796;', '&#9797;', '&#9798;', '&#9732;'
+        ];
+
+        if (!minValue || !maxValue || minValue >= maxValue || minValue < 0 || maxValue > codes.length) {
+            output.innerHTML = "<p>Введіть дійсний діапазон значень</p>";
+        } else {
+            let result = "";
+            for (let i = minValue; i <= maxValue; i++) {
+                result += codes[i] + "<br>";
+            }
+            output.innerHTML = result;
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+

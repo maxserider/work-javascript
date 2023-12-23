@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гра з вгадуванням числа</title>
+    <style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #e1e1e1;
+    text-align: center;
+    margin: 0;
+    }
+
+    .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+    padding: 9px 18px;
+    margin-top: 5px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    }
+    
+    button:hover {
+    background-color: rgb(210, 22, 22);
+    }
+
+    input {
+    padding: 8px;
+    margin-top: 8px;
+    }
+
+    h1 {
+    color: #333;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Гра з вгадуванням числа</h1>
+        <p>Введіть діапазон чисел:</p>
+        <input type="text" id="minNumber" placeholder="Мінімум">
+        <input type="text" id="maxNumber" placeholder="Максимум">
+        <button onclick="startGame()">Почати гру</button>
+        <p id="message"></p>
+        <input type="text" id="userGuess" placeholder="Ваш варіант">
+        <button onclick="checkGuess()">Перевірити</button>
+    </div>
+
+    <script>
+        let secretNumber;
+        let minNumberInput = document.getElementById('minNumber');
+        let maxNumberInput = document.getElementById('maxNumber');
+        let message = document.getElementById('message');
+        let userGuessInput = document.getElementById('userGuess');
+
+    function startGame() {
+        let minNumber = parseInt(minNumberInput.value);
+        let maxNumber = parseInt(maxNumberInput.value);
+
+        if (isNaN(minNumber) || isNaN(maxNumber) || minNumber >= maxNumber) {
+            alert('Введіть коректний діапазон чисел!');
+            return;
+        }
+
+    secretNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+    message.innerText = 'Гра розпочата. Спробуйте вгадати число в діапазоні від ' + minNumber + ' до ' + maxNumber + '.';
+    }
+
+    function checkGuess() {
+    let userGuess = parseInt(userGuessInput.value);
+
+    if (isNaN(userGuess)) {
+        alert('Введіть коректне число!');
+        return;
+    }
+
+    if (userGuess === secretNumber) {
+        message.innerText = 'Вітаємо! Ви вгадали число!';
+    } else if (userGuess < secretNumber) {
+        message.innerText = 'Спробуйте більше число.';
+    } else {
+        message.innerText = 'Спробуйте менше число.';
+    }
+}
+
+    </script>
+</body>
+</html>
